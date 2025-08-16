@@ -1,0 +1,31 @@
+module albeh_tb;
+  reg [3:0] a, b;
+  reg [1:0] f;
+  wire [3:0] c;
+  wire s;
+
+  // Instantiate DUT
+  albeh uut(c, s, a, b, f);
+
+  // Apply stimulus
+  initial begin
+    $monitor("Time=%0t | f=%b | a=%b | b=%b | c=%b | s=%b", 
+              $time, f, a, b, c, s);
+  end
+  initial begin
+    f=2'b00; a=4'b0000; b=4'b0000;
+  
+  end
+   always begin
+
+    f=2'b00; a=4'b0001; b=4'b1100; #2;
+    f=2'b01; a=4'b0011; b=4'b1101; #2;
+    f=2'b10; a=4'b0111; b=4'b1100; #2;
+    f=2'b11; a=4'b1001; b=4'b1001; #2;
+
+      // stop simulation after tests
+  end
+  initial begin
+    #100 $finish;
+  end
+endmodule

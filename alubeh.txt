@@ -1,0 +1,19 @@
+// Code your design here
+module albeh(c,s,a,b,f);
+  output reg [3:0]c;
+  output reg s;
+  input [3:0]a,b;
+  input[1:0]f;
+  always @(a or b or f)
+    begin 
+      case(f)
+        2'b00: c=a+b;
+        2'b01:c=a-b;
+        2'b10:c=a|b;
+        2'b11:c=a&b;
+      endcase
+      s = (c == 0);
+    end
+endmodule
+
+  
